@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Fake News Detection </title>
+
+    <!-- Latest compiled and minified CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+
+    <!-- Optional theme -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+
+    <!-- Latest compiled and minified JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+
+</head>
+
+<body>
+    <div class="total">
+        <div class="marquee1">
+            <marquee scrollamount="12" direction=down>
+                <img src="2.jpg" border=3 height=1 80 width=2 00 hspace=7 0>
+                <img src="3.jpg" border=3 height=1 80 width=2 00 hspace=7 0>
+                <img src="4.jpg" border=3 height=1 80 width=2 00 hspace=7 0>
+                <img src="5.png" border=3 height=1 80 width=2 00 hspace=7 0>
+                <img src="6.jpg" border=3 height=1 80 width=2 00 hspace=7 0>
+            </marquee>
+        </div>
+        <div class="login">
+            <h1>Fake News Detector</h1>
+
+            <form action="{{ url_for('predict')}}" method="POST">
+                <textarea name="message" rows=12 " cols="60 " required="required " placeholder="Enter the news Here.. "  style="font-size: 16pt "></textarea>
+                <hr>
+                <button type="submit " class="btn btn-primary btn-block btn-large btn-success ">Predict</button>
+
+                <div class="results ">
+                    {% if prediction == ['FAKE']%}
+                    <h2 style="color:red; ">Looking Spam⚠️News📰 </h2>
+                    {% elif prediction == ['REAL']%}
+                    <h2 style="color:green; "><b>Looking Real News📰</b></h2>
+                    {% endif %}
+                </div>
+            </form>
+        </div>
+
+        <div class="marquee2 ">
+            <marquee scrollamount="12 " direction=up>
+                <img src="7.png " border=3 height=1 80 width=2 00 hspace=7 0>
+                <img src="8.jpg " border=3 height=1 80 width=2 00 hspace=7 0>
+                <img src="9.jpg " border=3 height=1 80 width=2 00 hspace=7 0>
+                <img src="6.jpg " border=3 height=1 80 width=2 00 hspace=7 0>
+                <img src="11.png " border=3 height=1 80 width=2 00 hspace=7 0>
+            </marquee>
+        </div>
+    </div>
+</body>
